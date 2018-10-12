@@ -15,9 +15,6 @@ class CreateEmpleoTable extends Migration
     {
         Schema::create('empleo', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre');
-            $table->string('descripcion');
-            $table->string('resumen');
             $table->timestamps();
         });
     }

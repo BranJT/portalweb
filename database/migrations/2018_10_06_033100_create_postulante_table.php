@@ -15,15 +15,8 @@ class CreatePostulanteTable extends Migration
     {
         Schema::create('postulante', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('empleo_id');
-            $table->foreign('empleo_id')->references('id')->on('empleo');
-            $table->string('cv');
-            $table->string('linked');
-            $table->string('nombre');
-            $table->string('apellido');
-            $table->string('correo');
-            $table->integer('telefono');
-            $table->string('comentario');
+          
+        
             $table->timestamps();
         });
     }

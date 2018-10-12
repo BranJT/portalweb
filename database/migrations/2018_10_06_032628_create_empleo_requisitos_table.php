@@ -15,10 +15,7 @@ class CreateEmpleoRequisitosTable extends Migration
     {
         Schema::create('empleo_requisitos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('empleo_id');
-            $table->foreign('empleo_id')->references('id')->on('empleo');
-            $table->string('titulo');
-            $table->string('descripcion');
+          
             $table->timestamps();
         });
     }

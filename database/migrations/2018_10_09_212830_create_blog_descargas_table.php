@@ -15,8 +15,7 @@ class CreateBlogDescargasTable extends Migration
     {
         Schema::create('blog_descargas', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('blog_id');
-            $table->foreign('blog_id')->references('id')->on('blog');
+        
             $table->timestamps();
         });
     }
