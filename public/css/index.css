@@ -475,12 +475,31 @@ body, #slider, .wrap, .slide-content{
     transition: background-color 1s;
 }
 
-.btn-container {
-	position: absolute;
-	left: 0;
-	right: 0;
-	text-align: center;
+.section-text-container {
+	text-align: left;
 	bottom: 10rem;
+	color: #fff;
+	width: 100%;
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+.section-text-container p {
+	font-weight: 300;
+	padding-bottom: 2em;
+	border-bottom: 3px solid #fff;
+	margin-bottom: 3em;
+	line-height: 38px;
+	font-size: 20px;
+}
+
+.section-text-container h2 {
+	margin-bottom: 1em;
+	font-size: 24px;
+}
+
+.btn-container {
+	text-align: center;
 }
 
 #section-btn {
