@@ -484,7 +484,7 @@ body, #slider, .wrap, .slide-content{
 	margin: 0 auto;
 }
 
-.section-text-container p {
+.section-text-body p {
 	font-weight: 300;
 	padding-bottom: 2em;
 	border-bottom: 3px solid #fff;
@@ -493,7 +493,7 @@ body, #slider, .wrap, .slide-content{
 	font-size: 20px;
 }
 
-.section-text-container h2 {
+.section-text-body h2 {
 	margin-bottom: 1em;
 	font-size: 24px;
 }
