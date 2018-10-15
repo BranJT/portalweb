@@ -98,9 +98,13 @@
 					</div>
 				</div>
 			</div>
-			<div class="btn-container">
-				<div id="section-btn">
-					<a class="btn">Ver video</a>
+			<div class="section-text-container">
+				<h2>Título</h2>
+				<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia quae soluta accusamus sapiente debitis fugiat, maiores aut, placeat similique assumenda harum possimus, deleniti necessitatibus magnam vitae ipsum nisi expedita laborum.</p>
+				<div class="btn-container">
+					<div id="section-btn">
+						<a class="btn">Ver video</a>
+					</div>
 				</div>
 			</div>
 			<i class="arrow right" id="arrow-right"></i>
@@ -149,6 +153,7 @@
 		// -------------------- VARIABLES GLOBALES ----------------------------------
 
 		const contenido = document.querySelector('.content');
+		const btnBlock = document.querySelector('.section-text-container')
 		const videoBtn = document.getElementById('section-btn')
 		const btnContainer = videoBtn.parentElement;
 		const overlay = document.getElementById('overlay')
@@ -161,6 +166,38 @@
 		let slideIndex = 0;
 
 		// -------------------- FUNCIONES ----------------------------------
+
+		// Cambiar Texto
+		function changeText(title, texto) {
+			const titleElement = btnBlock.querySelector('h2')
+			const textElement = btnBlock.querySelector('p')
+			// title
+			titleElement.textContent = title
+			// text
+			textElement.textContent = texto
+		}
+
+		function changeTextOnVideo() {
+			switch (slideIndex) {
+				case 0:
+					changeText (
+						// Titulo
+						'Título',
+						// Texto 
+						`Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+						Officia quae soluta accusamus sapiente debitis fugiat, maiores aut, 
+						placeat similique assumenda harum possimus, 
+						deleniti necessitatibus magnam vitae ipsum nisi expedita laborum.`
+					)
+					break;
+				case 1:
+					changeText('untitulo', 'lorenosalataqueoalamuerteyoquesenosequeponer')
+					break;
+				default:
+					changeText('otrotitulo', 'estovaaserunstringmuuuuuylargobuenonotanto')
+					break;
+			}
+		}
 
 		// Manejo del video carrusel
 		function plusSlides(n, slides) {
@@ -226,7 +263,7 @@
 		// Muestre el vídeo con un overlay
 		function showVideo () {
 			// Desaparece al botón
-			btnContainer.style.display = 'none'
+			btnBlock.style.display = 'none'
 			// Aparece el overlay
 			overlay.classList.add('overlay-active');
 			// Aparece los videos
@@ -245,7 +282,7 @@
 			// Remueve a los vídeos
 			slider.style.display = 'none';
 			// Aparece el botón
-			btnContainer.style.display = 'inline-block'
+			btnBlock.style.display = 'inline-block'
 
 		}
 
@@ -258,12 +295,14 @@
 		const arrowLeft = document.querySelector('#arrow-left');
 		arrowLeft.addEventListener('click', function () {
 			slidesEngine(-1, sliderImages);
+			changeTextOnVideo()
 			videoEngine(slideIndex);
 		})
 
 		const arrowRight = document.querySelector('#arrow-right');
 		arrowRight.addEventListener('click', function () {
 			slidesEngine(1, sliderImages);
+			changeTextOnVideo()
 			videoEngine(slideIndex);
 		})
 		
