@@ -99,8 +99,18 @@
 				</div>
 			</div>
 			<div class="section-text-container">
-				<h2>Título</h2>
-				<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia quae soluta accusamus sapiente debitis fugiat, maiores aut, placeat similique assumenda harum possimus, deleniti necessitatibus magnam vitae ipsum nisi expedita laborum.</p>
+				<div class="section-text-body">
+					<h2>Título1</h2>
+					<p>1Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia quae soluta accusamus sapiente debitis fugiat, maiores aut, placeat similique assumenda harum possimus, deleniti necessitatibus magnam vitae ipsum nisi expedita laborum.</p>	
+				</div>
+				<div class="section-text-body">
+					<h2>Título2</h2>
+					<p>2Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia quae soluta accusamus sapiente debitis fugiat, maiores aut, placeat similique assumenda harum possimus, deleniti necessitatibus magnam vitae ipsum nisi expedita laborum.</p>	
+				</div>
+				<div class="section-text-body">
+					<h2>Título3</h2>
+					<p>3Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia quae soluta accusamus sapiente debitis fugiat, maiores aut, placeat similique assumenda harum possimus, deleniti necessitatibus magnam vitae ipsum nisi expedita laborum.</p>	
+				</div>
 				<div class="btn-container">
 					<div id="section-btn">
 						<a class="btn">Ver video</a>
@@ -153,8 +163,9 @@
 		// -------------------- VARIABLES GLOBALES ----------------------------------
 
 		const contenido = document.querySelector('.content');
-		const btnBlock = document.querySelector('.section-text-container')
 		const videoBtn = document.getElementById('section-btn')
+		const btnBlock = document.querySelector('.section-text-container')
+		const textBlock = btnBlock.querySelectorAll('.section-text-body')
 		const btnContainer = videoBtn.parentElement;
 		const overlay = document.getElementById('overlay')
 		const slider = document.getElementById('slider');
@@ -167,36 +178,10 @@
 
 		// -------------------- FUNCIONES ----------------------------------
 
-		// Cambiar Texto
-		function changeText(title, texto) {
-			const titleElement = btnBlock.querySelector('h2')
-			const textElement = btnBlock.querySelector('p')
-			// title
-			titleElement.textContent = title
-			// text
-			textElement.textContent = texto
-		}
-
-		function changeTextOnVideo() {
-			switch (slideIndex) {
-				case 0:
-					changeText (
-						// Titulo
-						'Título',
-						// Texto 
-						`Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-						Officia quae soluta accusamus sapiente debitis fugiat, maiores aut, 
-						placeat similique assumenda harum possimus, 
-						deleniti necessitatibus magnam vitae ipsum nisi expedita laborum.`
-					)
-					break;
-				case 1:
-					changeText('untitulo', 'lorenosalataqueoalamuerteyoquesenosequeponer')
-					break;
-				default:
-					changeText('otrotitulo', 'estovaaserunstringmuuuuuylargobuenonotanto')
-					break;
-			}
+		// Aparece y desaparece el bloque de título y texto
+		function textBlockEngine(index, arr) {
+			reset(arr)
+			arr[index].style.display = 'block'
 		}
 
 		// Manejo del video carrusel
@@ -239,6 +224,8 @@
 		//initializes the slider
 		function startSlide(slides) {
 			reset(slides);
+			reset(textBlock)
+			textBlock[0].style.display = 'block'
 			slides[0].style.display = 'block';
 		}
 		
@@ -261,7 +248,7 @@
 		}
 
 		// Muestre el vídeo con un overlay
-		function showVideo () {
+		function showVideo() {
 			// Desaparece al botón
 			btnBlock.style.display = 'none'
 			// Aparece el overlay
@@ -295,14 +282,14 @@
 		const arrowLeft = document.querySelector('#arrow-left');
 		arrowLeft.addEventListener('click', function () {
 			slidesEngine(-1, sliderImages);
-			changeTextOnVideo()
+			textBlockEngine(slideIndex, textBlock)
 			videoEngine(slideIndex);
 		})
 
 		const arrowRight = document.querySelector('#arrow-right');
 		arrowRight.addEventListener('click', function () {
 			slidesEngine(1, sliderImages);
-			changeTextOnVideo()
+			textBlockEngine(slideIndex, textBlock)
 			videoEngine(slideIndex);
 		})
 		
